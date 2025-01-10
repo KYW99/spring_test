@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글목록</title>
+    <link rel="stylesheet" th:href="@{/css/list.css}"/>
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <h3>Article List</h3>
+        <a th:href="@{/article/write}">글쓰기</a>
+    </header>
+    <main id="board">
+        <section class="list">
+            <nav>
+                <h1>글목록</h1>
+            </nav>
+
+            <table border="0" class="boardlist">
+                <colgroup>
+                    <col width="10%"/>
+                    <col width="20%"/>
+                    <col width="20%"/>
+                    <col width="15%"/>
+                    <col width="35%"/>
+                </colgroup>
+                <tr class="boardtop">
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>내용</th>
+                    <th>작성자</th>
+                    <th></th>
+                </tr>
+                <tr th:each="articles, iterStat : ${articles}">
+                    <td>
+                        <a th:href="@{/article/view/{id}(id=${articles.no})}"
+                           th:text="${(pageResponseDTO.pg - 1) * pageResponseDTO.size + iterStat.index + 1}"></a>
+                    </td>
+                    <td>
+                        <a th:href="@{/article/view/{id}(id=${articles.no})}" th:text="${articles.title}"></a>
+                     </td>
+                    <td>
+                        <a th:href="@{/article/view/{id}(id=${articles.no})}" th:text="${articles.content}"></a>
+                    </td>
+                    <td th:text="${articles.author != null ? articles.author : '익명'}"></td>
+                    <td>
+                        <a th:href="@{/article/delete(no=${articles.no})}" class="delete">삭제</a>
+                        <a th:href="@{/article/modify/{id}(id=${articles.no})}" class="modify">수정</a>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="pagination">
+                <!-- 이전 페이지 버튼 -->
+                <a th:href="@{/article/list(pg=${pageResponseDTO.pg - 1}, size=${pageResponseDTO.size})}"
+                   th:if="${pageResponseDTO.prev}" class="prev">이전</a>
+
+                <!-- 페이지 번호 표시 -->
+                <span th:each="pageNum : ${#numbers.sequence(pageResponseDTO.start, pageResponseDTO.end)}">
+                    <a th:href="@{/article/list(pg=${pageNum}, size=${pageResponseDTO.size})}"
+                       th:text="${pageNum}"
+                       th:classappend="${pageNum == pageResponseDTO.pg ? 'current' : ''}" class="current">
+                    </a>
+                </span>
+                <!-- 다음 페이지 버튼 -->
+                <a th:href="@{/article/list(pg=${pageResponseDTO.pg + 1}, size=${pageResponseDTO.size})}"
+                   th:if="${pageResponseDTO.next}" class="next">다음</a>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

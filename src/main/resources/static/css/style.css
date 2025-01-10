@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    font: normal 12px '돋움';
+}
+ul, ol {list-style: none;}
+a {text-decoration: none; color: #111;}
+input, textarea {outline: none;}
+
+#wrapper {
+    width: 800px;
+    height: auto;
+    margin: 0 auto;
+}
+
+header{
+    width: 100%;
+    height: 35px;
+    background-color: black;
+}
+
+header > h3{
+    float: left;
+    margin-top: 7px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+table, td, th {
+    border-collapse: collapse;
+}
+
+.write > nav > h1{
+    font-size: large;
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+table {
+    width: 100%;
+    height: auto;
+    margin-top: 5px;
+    border-style: hidden;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+table ,tr, td{
+    border-top: 1px solid gray;
+}
+
+
+table tr:nth-child(1) {
+    height: 55px;
+}
+
+table tr:nth-child(2) {
+    height: 350px;
+}
+table tr:nth-child(3) {
+    height: 55px;
+}
+
+table tr> td> textarea{
+    width: 100%;
+    height: 250px;
+    resize: none;
+}
+
+.title{
+    width: 200px;
+}
+
+.buttons{
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.boardlist{
+    width: 100%;
+    height: auto;
+    margin-top: 7px;
+    border-style: hidden;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+.boardtop{
+    height: 50px;
+}
+.boardlist  th{
+    font-size: 15px;
+    border-bottom: 1px solid gray;
+}
+.boardlist td{
+    position: relative;
+    height: 65px;
+    font-size: 15px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.boardlist td > .delete {
+    width: 50px;
+    height: 35px;
+    background-color: red;
+    color: white;
+    font-weight: 500;
+    border-radius: 15%;
+    border: none;
+    cursor: pointer;
+}
+
+.boardlist td > .modify {
+    width: 50px;
+    height: 35px;
+    background-color: burlywood;
+    color: black;
+    font-weight: 500;
+    border-radius: 15%;
+    border: none;
+    cursor: pointer;
+}
